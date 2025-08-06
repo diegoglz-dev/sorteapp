@@ -59,6 +59,10 @@ function sortTeams() {
         displayTeam("team1", team1);
         displayTeam("team2", team2);
 
+        // Cambiar el texto del botón
+        const sortButton = document.querySelector(".btn-success");
+        sortButton.innerHTML = '<i class="fa-solid fa-futbol"></i> Repetir sorteo';
+
         // Ocultar loader y volver a habilitar la UI
         document.getElementById("loaderOverlay").classList.add("d-none");
         toggleUIInteraction(true);
@@ -82,6 +86,10 @@ function resetAll() {
     updateNameList();
     document.getElementById("team1").innerHTML = "";
     document.getElementById("team2").innerHTML = "";
+
+    // Cambiar el texto del botón
+    const sortButton = document.querySelector(".btn-success");
+    sortButton.innerHTML = '<i class="fa-solid fa-futbol"></i> Sortear equipos';
 }
 
 function handleKey(event) {
