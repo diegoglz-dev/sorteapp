@@ -8,3 +8,9 @@ Es una aplicación web, creada con el fin de realizar un sorteo de 10 personas, 
 [![CSS3 Badge](https://img.shields.io/badge/CSS-1572B6?logo=CSS&logoColor=fff&style=flat)](https://github.com/diegoglz-dev)
 [![Bootstrap Badge](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=fff&style=flat)](https://github.com/diegoglz-dev)
 [![JavaScript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat)](https://github.com/diegoglz-dev)
+
+## Acceder a la aplicación
+
+Para acceder a la misma por favor hacer <a href="https://diegoglz-dev.github.io/sorteapp/" target="_blank">click</a> en el botón
+
+<a href="https://diegoglz-dev.github.io/sorteapp/" target="_blank" aria-label="Github Pages"><img src="https://img.shields.io/badge/Github%20Pages-181717?logo=github&logoColor=fff&style=flat" alt="Github%20Pages"></a>
