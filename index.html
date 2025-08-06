@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sorteo de Equipos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <meta name="author" content="Diego Andres Gonzalez">
+</head>
+
+<body>
+    <div class="d-flex justify-content-end align-items-center mb-4 gap-2">
+        <i class="fa-solid fa-sun" id="sunIcon"></i>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+        </div>
+        <i class="fa-solid fa-moon" id="moonIcon"></i>
+    </div>
+
+    <div class="container py-5">
+        <h2 class="mb-4 text-center"><i class="fa-regular fa-handshake"></i> Sorteo de Equipos (10 personas)</h2>
+
+        <div class="mb-3">
+            <input type="text" id="nameInput" class="form-control" placeholder="Escribe un nombre y presiona Agregar"
+                autofocus autocomplete="off" onkeydown="handleKey(event)">
+        </div>
+        <div class="mb-4 d-flex justify-content-between">
+            <button class="btn btn-secondary" onclick="addName()"><i class="fa-solid fa-person"></i> Agregar</button>
+            <button class="btn btn-success" onclick="sortTeams()"><i class="fa-solid fa-futbol"></i> Sortear
+                Equipos</button>
+            <button class="btn btn-danger" onclick="resetAll()"><i class="fa-solid fa-undo"></i> Reiniciar</button>
+        </div>
+
+        <h5>Nombres agregados (<span id="count">0</span>/10):</h5>
+        <ul class="list-group mb-4" id="nameList"></ul>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-center"><i class="fa-solid fa-flag"></i> Equipo 1</h4>
+                <ul class="list-group" id="team1"></ul>
+            </div>
+            <div class="col-md-6">
+                <h4 class="text-center"><i class="fa-regular fa-flag"></i> Equipo 2</h4>
+                <ul class="list-group" id="team2"></ul>
+            </div>
+        </div>
+
+        <div id="loaderOverlay"
+            class="d-none position-fixed top-0 start-0 w-100 h-100 bg-black bg-opacity-75 d-flex justify-content-center align-items-center"
+            style="z-index: 1050;">
+            <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
