@@ -37,14 +37,31 @@ function addName() {
 function updateNameList() {
     const list = document.getElementById("nameList");
     list.innerHTML = "";
+
     names.forEach((name, index) => {
         const li = document.createElement("li");
-        li.className = "list-group-item";
-        li.textContent = `${index + 1}. ${name}`;
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = `${index + 1}. ${name}`;
+
+        // Botón eliminar
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "btn btn-sm btn-outline-danger";
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        deleteBtn.onclick = () => {
+            names.splice(index, 1); // eliminar del array
+            updateNameList(); // refrescar vista
+        };
+
+        li.appendChild(nameSpan);
+        li.appendChild(deleteBtn);
         list.appendChild(li);
     });
+
     document.getElementById("count").textContent = names.length;
 }
+
 
 function sortTeams() {
     if (names.length !== 10) {
@@ -52,11 +69,19 @@ function sortTeams() {
         return;
     }
 
-    // Mostrar loader y deshabilitar botones e input
+    // Reiniciar goles y marcadores antes de nuevo sorteo
+    for (const key in goals) delete goals[key];
+    teamScores = { team1: 0, team2: 0 };
+    teamPlayers = { team1: [], team2: [] };
+    document.getElementById("scorersList").innerHTML = "";
+    document.querySelector('h4[for-team="1"]').innerHTML = `<i class="fa-solid fa-flag"></i> Equipo 1`;
+    document.querySelector('h4[for-team="2"]').innerHTML = `<i class="fa-regular fa-flag"></i> Equipo 2`;
+
+    // Mostrar loader y deshabilitar UI
     document.getElementById("loaderOverlay").classList.remove("d-none");
     toggleUIInteraction(false);
 
-    // Simular tiempo de procesamiento con setTimeout (2 segundos)
+    // Simular sorteo
     setTimeout(() => {
         const shuffled = [...names].sort(() => 0.5 - Math.random());
         const team1 = shuffled.slice(0, 5);
@@ -65,11 +90,11 @@ function sortTeams() {
         displayTeam("team1", team1);
         displayTeam("team2", team2);
 
-        // Cambiar el texto del botón
+        // Cambiar texto del botón
         const sortButton = document.querySelector(".btn-success");
         sortButton.innerHTML = '<i class="fa-solid fa-futbol"></i> Repetir sorteo';
 
-        // Ocultar loader y volver a habilitar la UI
+        // Ocultar loader y habilitar UI
         document.getElementById("loaderOverlay").classList.add("d-none");
         toggleUIInteraction(true);
     }, 2000);
