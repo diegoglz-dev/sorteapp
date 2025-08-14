@@ -123,7 +123,7 @@ function displayTeam(elementId, team) {
 
         const minusBtn = document.createElement("button");
         minusBtn.className = "btn btn-sm btn-outline-danger me-1";
-        minusBtn.innerHTML = "−";
+        minusBtn.innerHTML = '<i class="fa-solid fa-minus"></i>';
         minusBtn.onclick = () => {
             if (goals[name] > 0) {
                 goals[name]--;
@@ -133,7 +133,7 @@ function displayTeam(elementId, team) {
 
         const plusBtn = document.createElement("button");
         plusBtn.className = "btn btn-sm btn-outline-success";
-        plusBtn.innerHTML = "+";
+        plusBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
         plusBtn.onclick = () => {
             goals[name]++;
             updateAll();
